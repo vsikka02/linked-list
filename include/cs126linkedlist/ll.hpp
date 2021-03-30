@@ -173,7 +173,7 @@ size_t LinkedList<ElementType>::size() const {
 
 template <typename ElementType>
 bool LinkedList<ElementType>::empty() const {
-
+  return size_ == 0 && head_ == nullptr;
 }
 
 template <typename ElementType>
