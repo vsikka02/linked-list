@@ -3,40 +3,34 @@
 #ifndef CS126LINKEDLIST_LL_H_
 #define CS126LINKEDLIST_LL_H_
 
-
 #include <iostream>
 #include <utility>
 #include <vector>
-
 
 namespace cs126linkedlist {
 
 // Template for a linked list class.
 template <typename ElementType>
 class LinkedList {
-
-
-
   // Declare any struct, class, or anything you need to use here, as long as it
   // is private.
 
   // Here is a struct to get you started. You'll probably need more than this.
   struct Node {
     ElementType data_;
-    Node *next_;
+    Node* next_;
   };
 
-  Node *head_;
+  Node* head_;
   size_t size_;
 
-
- // DO NOT CHANGE THE PUBLIC INTERFACE OF THIS CLASS!
+  // DO NOT CHANGE THE PUBLIC INTERFACE OF THIS CLASS!
  public:
   // Default Constructor.
   LinkedList();
 
   // Initialize from vector.
-  explicit LinkedList(const std::vector<ElementType> &values);
+  explicit LinkedList(const std::vector<ElementType>& values);
 
   // --- Big 5 ---
   // Copy constructor.
@@ -88,11 +82,11 @@ class LinkedList {
     Node* current_;
 
    public:
-     iterator() : current_(nullptr) {};
-     iterator(Node* ptr) {current_ = ptr;};
-     iterator& operator++();
-     ElementType& operator*() const;
-     bool operator!=(const iterator& other) const;
+    iterator() : current_(nullptr){};
+    iterator(Node* ptr) { current_ = ptr; };
+    iterator& operator++();
+    ElementType& operator*() const;
+    bool operator!=(const iterator& other) const;
   };
 
   iterator begin();
@@ -103,11 +97,11 @@ class LinkedList {
     const Node* current_;
 
    public:
-     const_iterator() : current_(nullptr) {};
-     const_iterator(Node* ptr) {current_ = ptr;};
-     const_iterator& operator++();
-     const ElementType& operator*() const;
-     bool operator!=(const const_iterator& other) const;
+    const_iterator() : current_(nullptr){};
+    const_iterator(Node* ptr) { current_ = ptr; };
+    const_iterator& operator++();
+    const ElementType& operator*() const;
+    bool operator!=(const const_iterator& other) const;
   };
 
   const_iterator begin() const;
@@ -116,7 +110,7 @@ class LinkedList {
   // --- End of Container Methods ---
 };
 
-template<typename ElementType>
+template <typename ElementType>
 std::ostream& operator<<(std::ostream& os, const LinkedList<ElementType>& list);
 
 }  // namespace cs126linkedlist
