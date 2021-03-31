@@ -77,7 +77,7 @@ TEST_CASE("Test Assignment Operators") {
     list = std::move(list_2);
 
     REQUIRE(list == test_list);
-    REQUIRE(list_2 == LinkedList<int>());
+    REQUIRE(list_2.empty());
   }
   SECTION("Test Copy Assignment Operator with no defined list") {
     LinkedList<int> empty_list;
@@ -148,6 +148,12 @@ TEST_CASE("Push Front", "[constructor][push_back][size][empty]") {
 TEST_CASE("Pop Front") {
   LinkedList<int> list;
 
+  SECTION("Pop Front Zero Elements") {
+    list.pop_back();
+    REQUIRE(list.size() == 0);
+    REQUIRE(list.empty());
+  }
+
   SECTION("Pop Front one element") {
     list.push_back(1);
     list.pop_front();
@@ -167,6 +173,13 @@ TEST_CASE("Pop Front") {
 
 TEST_CASE("Pop Back") {
   LinkedList<int> list;
+
+  SECTION("Pop Back with No Elements") {
+    list.pop_back();
+
+    REQUIRE(list.empty());
+    REQUIRE(list.size() == 0);
+  }
 
   SECTION("Pop Back One Element") {
     list.push_back(1);
@@ -352,7 +365,7 @@ TEST_CASE("Test Print") {
     ss << list;
 
     REQUIRE(ss.str() ==
-            "Data: 0\nData: 1\nData: 2\nData: 3\nData: 4\nData: 5\n");
+            "0, 1, 2, 3, 4, 5");
   }
   SECTION("Empty Vector") {
     LinkedList<int> list;

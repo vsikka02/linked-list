@@ -205,8 +205,15 @@ void LinkedList<ElementType>::clear() {
 template <typename ElementType>
 std::ostream& operator<<(std::ostream& os,
                          const LinkedList<ElementType>& list) {
+  size_t current_index = 0;
   for (ElementType value : list) {
-    os << "Data: " << value << std::endl;
+    if (current_index == list.size() - 1) {
+      os << value;
+    }
+    else {
+      os << value << ", ";
+    }
+    current_index++;
   }
 
   return os;
